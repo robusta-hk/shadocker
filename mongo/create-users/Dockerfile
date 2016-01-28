@@ -19,4 +19,7 @@ RUN mkdir --parents /opt/conf/ \
 
 WORKDIR /opt/conf/
 
+
+VOLUME /opt/conf
+
 COPY create-users.js /opt/setup/
