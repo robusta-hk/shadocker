@@ -17,9 +17,11 @@ RUN mkdir --parents /opt/conf/ \
     && mkdir --parents /data/db/ \
     && chown -R mongodb:mongodb /data/db
 
+
+VOLUME /opt/setup /opt/conf
+
 WORKDIR /opt/conf/
 
-
-VOLUME /opt/conf
+# Same as config-file
 
 COPY create-users.js /opt/setup/
