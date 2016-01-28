@@ -3,7 +3,7 @@ load("/opt/conf/passwords.js");
 // root in all database : can do more stuff than jcvd
 db.createUser( {
     user: "sly",
-    pwd: "password",
+    pwd: passwordSly,
     roles: [ { role: "root", db: "admin" } ]
 });
 

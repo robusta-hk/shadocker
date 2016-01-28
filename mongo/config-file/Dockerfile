@@ -19,5 +19,8 @@ VOLUME /opt/setup /opt/conf
 
 WORKDIR /opt/conf/
 
+COPY keyfile /opt/conf
+COPY mongod.conf /opt/conf
+
 # those arguments will be added to the entrypoint
 CMD ["mongod", "-f", "/opt/conf/mongod.conf"]
