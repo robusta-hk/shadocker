@@ -1,6 +1,7 @@
 FROM mongo:3.2
 
 MAINTAINER Nicolas Zozol - nz@robusta.io - http://www.robusta.io - hk project
+# docker pull 100k/mongo-create-users
 
 # Objectif is to create users at the stratup, then kill the mongo
 # Users will be put into the data-container
@@ -13,7 +14,7 @@ MAINTAINER Nicolas Zozol - nz@robusta.io - http://www.robusta.io - hk project
 # Warning : js script will use this directory
 RUN mkdir --parents /opt/conf/ \
     && mkdir --parents /opt/setup/ \
-    && mkdir --parents /data/db/
+    && mkdir --parents /data/db/ \
     && chown -R mongodb:mongodb /data/db
 
 WORKDIR /opt/conf/
