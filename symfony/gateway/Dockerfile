@@ -22,7 +22,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 
 WORKDIR /app
-COPY composer.json .
+COPY composer.json /app/
 RUN composer install
 
 
