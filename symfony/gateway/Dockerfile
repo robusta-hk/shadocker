@@ -1,0 +1,35 @@
+FROM tutum/lamp
+MAINTAINER Nicolas Zozol <nz@robusta.io>
+
+# Classic LAMP with Symfony and Node JS 4
+
+# Add some php5 extension
+RUN apt-get update && apt-get install -y vim curl php5-common php5-cli php5-fpm php5-mcrypt php5-mysql php5-apcu php5-gd php5-imagick php5-curl php5-intl
+
+#ADD symfony.ini /etc/php5/fpm/conf.d/
+#ADD symfony.ini /etc/php5/cli/conf.d/
+
+#ADD symfony.pool.conf /etc/php5/fpm/pool.d/
+
+# Docker user has id 1000
+RUN usermod -u 1000 www-data
+
+# Composer SHOULD be run inside the host, with the code
+#ENV COMPOSER_VERSION 1.0.0-alpha11
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer #--version=${COMPOSER_VERSION}
+
+
+WORKDIR /app
+COPY composer.json .
+RUN composer install
+
+
+VOLUME /app
+
+
+
+
+# Command to run :
+#docker run -d --name symfony -v /app:/app robusta/symfony-gateway
