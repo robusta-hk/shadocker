@@ -20,13 +20,16 @@ RUN usermod -u 1000 www-data
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer #--version=${COMPOSER_VERSION}
 
+RUN unlink /var/www/html && rm -rf /app  && mkdir -p /var/www/html/symfony/app/config/
 
-WORKDIR /app
-COPY composer.json /app/
-RUN composer install
+WORKDIR /var/www/html/symfony
 
+COPY composer.json /var/www/html/symfony/
+COPY parameters.yml.dist /var/www/html/symfony/app/config/
 
-VOLUME /app
+RUN composer install --no-scripts
+# then use git clone, then composer install
+#VOLUME /app
 
 
 
