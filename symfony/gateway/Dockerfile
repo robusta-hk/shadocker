@@ -25,7 +25,6 @@ RUN unlink /var/www/html && rm -rf /app  && mkdir -p /var/www/html/symfony/app/c
 WORKDIR /var/www/html/symfony
 
 COPY composer.json /var/www/html/symfony/
-COPY parameters.yml.dist /var/www/html/symfony/app/config/
 
 RUN composer install --no-scripts
 # then use git clone, then composer install
