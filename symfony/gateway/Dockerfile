@@ -22,16 +22,26 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN unlink /var/www/html && rm -rf /app  && mkdir -p /var/www/html/symfony/app/config/
 
+mysql -uroot -e "CREATE DATABASE gateway;"
+
 WORKDIR /var/www/html/symfony
 
-COPY composer.json /var/www/html/symfony/
+COPY composer /bin
+RUN chmod +x /bin/composer
 
-RUN composer install --no-scripts
+#RUN composer install --no-scripts
 # then use git clone, then composer install
 #VOLUME /app
 
-
-
-
 # Command to run :
 #docker run -d --name symfony -v /app:/app robusta/symfony-gateway
+#/Users/nicorama/code/clients/store-gateway/path
+
+#Mac :
+#docker run -d --name symfony -v /Users/nicorama/code/clients/store-gateway/path:/app -p 80:80 robusta/symfony-gateway
+#docker-machine ls
+#docker-machine ip default   # that's why 80 needs to be forwarded...
+
+#php app/console cache:clear
+# 		php app/console doctrine:schema:update --force
+# 		php app/console doctrine:fixtures:load
