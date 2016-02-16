@@ -26,7 +26,7 @@ RUN unlink /var/www/html && rm -rf /app  && mkdir -p /var/www/html/symfony/app/c
 
 COPY mysql-script.sh ./
 RUN chmod +x mysql-script.sh
-RUN ./mysql-script.sh
+#RUN ./mysql-script.sh
 
 COPY composer /bin
 RUN chmod +x /bin/composer
