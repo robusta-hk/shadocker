@@ -22,7 +22,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN unlink /var/www/html && rm -rf /app  && mkdir -p /var/www/html/symfony/app/config/
 
-mysql -uroot -e "CREATE DATABASE gateway;"
+RUN mysql -uroot -e "CREATE DATABASE gateway;"
 
 WORKDIR /var/www/html/symfony
 
