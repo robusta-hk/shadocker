@@ -22,7 +22,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN unlink /var/www/html && rm -rf /app  && mkdir -p /var/www/html/symfony/app/config/
 
-COPY mysql-script.sh
+
+
+COPY mysql-script.sh ./
 RUN chmod +x mysql-script.sh && ./mysql-script.sh
 
 COPY composer /bin
