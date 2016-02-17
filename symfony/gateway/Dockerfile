@@ -28,8 +28,8 @@ COPY mysql-script.sh ./
 RUN chmod +x mysql-script.sh
 #RUN ./mysql-script.sh
 
-COPY composer /bin
-RUN chmod +x /bin/
+COPY ./composer /bin
+RUN chmod +x /bin/composer
 
 WORKDIR /var/www/html/symfony
 
