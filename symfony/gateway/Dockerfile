@@ -39,6 +39,7 @@ COPY install.sh ./install.sh
 RUN chmod +x ./install.sh
 
 
+VOLUME /app
 
 #RUN composer install --no-scripts
 # then use git clone, then composer install
