@@ -4,19 +4,15 @@
 
 # starting mysql
 
-/usr/bin/mysqld_safe > /dev/null 2>&1 &
+#/usr/bin/mysqld_safe > /dev/null 2>&1 &
+#/etc/init.d/mysql start &
 
-RET=1
-while [[ RET -ne 0 ]]; do
-    echo "=> Waiting for confirmation of MySQL service startup"
-    sleep 5
-    mysql -uroot -e "status" > /dev/null 2>&1
-    RET=$?
-done
+
+#sleep 5
 
 # the commands
 
 mysql -uroot -e "CREATE DATABASE gateway;"
 
 # shutdown
-mysqladmin -uroot shutdown
+#mysqladmin -uroot shutdown
