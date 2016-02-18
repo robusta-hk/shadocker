@@ -24,15 +24,21 @@ RUN usermod -u 1000 www-data
 
 
 
-COPY mysql-script.sh ./
-RUN chmod +x mysql-script.sh
 #RUN ./mysql-script.sh
 
-COPY composer.phar /bin
-RUN chmod +x /bin/composer.phar
-RUN mv /bin/composer.phar /bin/composer
+COPY composer.phar /bin/composer
+RUN chmod +x /bin/composer
+#RUN mv /bin/composer.phar /bin/composer
+
+
 
 WORKDIR /app
+
+## This script must be run AFTER the code is uploaded
+COPY install.sh ./install.sh
+RUN chmod +x ./install.sh
+
+
 
 #RUN composer install --no-scripts
 # then use git clone, then composer install
