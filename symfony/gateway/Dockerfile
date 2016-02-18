@@ -28,8 +28,9 @@ COPY mysql-script.sh ./
 RUN chmod +x mysql-script.sh
 #RUN ./mysql-script.sh
 
-COPY ./composer /bin
-RUN chmod +x /bin/composer
+COPY composer.phar /bin
+RUN chmod +x /bin/composer.phar
+RUN mv /bin/composer.phar /bin/composer
 
 WORKDIR /app
 
